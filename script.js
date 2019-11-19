@@ -1,3 +1,10 @@
+function getLocalStorage(key) {
+    let value = localStorage.getItem(key);
+    if (value) {
+        $(`#text${key}`).text(value);
+    }
+}
+
 $( document ).ready(function() {
     $("#currentDay").text(moment().format("dddd, MMMM Do"));
     for (let i = 9; i < 18; i++) {
@@ -24,3 +31,12 @@ $( document ).ready(function() {
 
         getLocalStorage(i);
     }
+
+    function formatAMPM(hours) {
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        return hours + ampm;
+    }
+formatAMPM();
+
