@@ -40,3 +40,20 @@ $( document ).ready(function() {
     }
 formatAMPM();
 
+function updateColors(){
+    var currentTime = new Date().getHours();
+    for (var i = 9; i < 18; i++) { 
+    console.log(currentTime, $(`#${i}`).data("time"));
+     if ($(`#${i}`).data("time") == currentTime){
+        $(`#text${i}`).addClass( "present");
+    } else if (currentTime < $(`#${i}`).data("time")) {
+        $(`#text${i}`).addClass( "future");
+    }
+}
+}
+
+setInterval(function() {
+updateColors();
+}, 1000);
+
+
